@@ -35,7 +35,7 @@ public class ClienteController {
 		if (cliente.isPresent())
 			return new ResponseEntity<Cliente>(cliente.get(), HttpStatus.OK);
 		else
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@RequestMapping(value = "/cliente", method = RequestMethod.POST)
