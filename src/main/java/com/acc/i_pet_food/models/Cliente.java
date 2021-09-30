@@ -2,15 +2,22 @@ package com.acc.i_pet_food.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name = "Cliente")
+@Table(name = "cliente")
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,6 +40,14 @@ public class Cliente implements Serializable {
 	
 	@Column(name = "cli_celular_zap", nullable=false, unique=true)
 	private Integer numCelular;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="cliente", targetEntity = Compra.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Compra> compras = new HashSet<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="cliente", targetEntity = Pet.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Pet> pets = new HashSet<>(); 
 
 	public Cliente() {}
 
@@ -43,6 +58,14 @@ public class Cliente implements Serializable {
 		this.ddd = ddd;
 		this.email = email;
 		this.numCelular = numCelular;
+	}
+	
+	public Set<Compra> getCompras(){
+		return compras;
+	}
+	
+	public Set<Pet> getPets(){
+		return pets;
 	}
 
 	public String getCpf() {
@@ -96,7 +119,7 @@ public class Cliente implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Cliente [cpf=" + cpf + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", ddd=" + ddd

@@ -1,18 +1,26 @@
 package com.acc.i_pet_food.models;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "PetShop")
+@Table(name = "petShop")
 public class PetShop implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+
 	@Id
 	@Column(name = "pets_CNPJ_pk")
 	private String cnpj;
@@ -28,6 +36,11 @@ public class PetShop implements Serializable {
 	
 	@Column(name = "pets_nm_resp")
 	private String nomeResponsavel;
+	
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="petShop", targetEntity = Estoque.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Estoque> estoques = new HashSet<>();
 	
 	public PetShop() {}
 
@@ -80,6 +93,10 @@ public class PetShop implements Serializable {
 		this.nomeResponsavel = nomeResponsavel;
 	}
 
+	public Set<Estoque> getEstoque(){
+		return estoques;
+	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

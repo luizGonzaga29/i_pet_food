@@ -18,6 +18,10 @@ public class Pet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Id
 	@Column(name = "pet_id_pk")
 	@GeneratedValue(strategy = GenerationType.AUTO)
