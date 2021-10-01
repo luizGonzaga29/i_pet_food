@@ -1,19 +1,22 @@
 package com.acc.i_pet_food.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "compra")
@@ -26,7 +29,7 @@ public class Compra implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "cmp_cli_CPF_pk_fk")
 	private Cliente cliente;
 	
@@ -39,8 +42,9 @@ public class Compra implements Serializable {
 	@Column(name = "cmp_qtde")
 	private Integer quantidade;
 	
-	@ManyToMany(mappedBy = "compras")
-	List<Racao> racao = new ArrayList<>();
+	
+	@OneToMany(mappedBy="compra", cascade=CascadeType.ALL, targetEntity = Item.class)
+    private Set<Item> itens = new HashSet<Item>();
 	
 	public Compra() {}
 
@@ -50,6 +54,14 @@ public class Compra implements Serializable {
 		this.dataCompra = dataCompra;
 		this.valor = valor;
 		this.quantidade = quantidade;
+	}
+
+	public Set<Item> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<Item> itens) {
+		this.itens = itens;
 	}
 
 	public Integer getId() {

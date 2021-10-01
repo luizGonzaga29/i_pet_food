@@ -24,10 +24,6 @@ public class Estoque implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Id
 	@Column(name = "est_id_pk")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,7 +38,7 @@ public class Estoque implements Serializable {
 	@JoinColumn(name = "est_pets_CNPJ_pk_fk")
 	private PetShop petShop;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy="estoque", targetEntity = Racao.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Racao> racoes = new HashSet<>();
 	

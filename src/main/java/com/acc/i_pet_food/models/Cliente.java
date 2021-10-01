@@ -26,19 +26,19 @@ public class Cliente implements Serializable {
 	@Column(name = "cli_CPF_pk")
 	private String cpf;
 	
-	@Column(name = "cli_nome", nullable=false)
+	@Column(name = "cli_nome")
 	private String nome;
 	
-	@Column(name = "cli_mesano_nascto", nullable=false)
+	@Column(name = "cli_mesano_nascto")
 	private Date dataNascimento;
 	
-	@Column(name = "cli_ddd", nullable=false)
+	@Column(name = "cli_ddd")
 	private Integer ddd;
 	
-	@Column(name = "cli_email", nullable=false, unique=true)
+	@Column(name = "cli_email")
 	private String email;
 	
-	@Column(name = "cli_celular_zap", nullable=false, unique=true)
+	@Column(name = "cli_celular_zap")
 	private Integer numCelular;
 	
 	@JsonIgnore

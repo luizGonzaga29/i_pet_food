@@ -18,10 +18,6 @@ public class Pet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Id
 	@Column(name = "pet_id_pk")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,13 +45,17 @@ public class Pet implements Serializable {
 	private Float peso;
 	
 	@ManyToOne
-	@JoinColumn(name = "cmp_cli_CPF_pk_fk")
+	@JoinColumn(name = "pet_cli_CPF_pk_fk")
 	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "pet_rac_id_pk_fk")
+	private Racao racao;
 
 	public Pet() {}
 
 	public Pet(Integer id, String especie, String nome, String apelido, Date dataNascimento, String raca, String genero,
-			Float peso, Cliente cliente) {
+			Float peso, Cliente cliente, Racao racao) {
 		this.id = id;
 		this.especie = especie;
 		this.nome = nome;
@@ -65,6 +65,7 @@ public class Pet implements Serializable {
 		this.genero = genero;
 		this.peso = peso;
 		this.cliente = cliente;
+		this.racao = racao;
 	}
 
 	public Integer getId() {
@@ -139,8 +140,13 @@ public class Pet implements Serializable {
 		this.cliente = cliente;
 	}
 
-	
+	public Racao getRacao() {
+		return racao;
+	}
 
+	public void setRacao(Racao racao) {
+		this.racao = racao;
+	}
 
 	@Override
 	public int hashCode() {

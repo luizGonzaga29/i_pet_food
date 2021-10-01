@@ -97,10 +97,6 @@ public class PetShop implements Serializable {
 		return estoques;
 	}
 	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public String toString() {
 		return "PetShop [cnpj=" + cnpj + ", razaoSocial=" + razaoSocial + ", nomeFantasia=" + nomeFantasia + ", email="
