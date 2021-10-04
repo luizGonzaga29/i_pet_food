@@ -1,0 +1,36 @@
+<form [formGroup]="formCliente" (ngSubmit)="onSubmit()">
+  <div class="container" style="width: 500px;">
+    <div class="card bg-light mb-3 mx-auto mt-5">
+      <div class="card-header text-center" style="background-color:#ff9a61;">
+        <h2>Faça seu cadastro</h2>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="cPF">CPF</label>
+          <input type="text" class="form-control mt-2 mb-2" name="cPF" id="cPF" formControlName="cPF" required>
+        </div>
+
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control mt-2 mb-2" name="nome" id="nome" formControlName="nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="diaMesNascto">Data de nascimento</label>
+          <input type="date" class="form-control mt-2 mb-2" name="diaMesNascto" id="diaMesNascto"
+            formControlName="diaMesNascto">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control mt-2 mb-2" name="email" id="email" formControlName="email" required>
+        </div>
+
+        <button type="submit" class="btn mt-4 mr-5" style="background-color:#ff9a61;">Salvar</button>
+        &nbsp;
+        <button class="btn btn-secondary mt-4 ml-5">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+</form>

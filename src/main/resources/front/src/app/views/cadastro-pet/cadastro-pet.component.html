@@ -1,0 +1,75 @@
+<form [formGroup]="formPet" (ngSubmit)="onSubmit()">
+    <div class="container" style="width: 500px;">
+        <div class="card bg-light mb-3 mx-auto mt-5">
+            <div class="card-header text-center" style="background-color:#ff9a61;">
+                <h2>Bem-vindo!</h2>
+                <p>Cadastre seu pet</p>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control mt-2 mb-2" name="nome" id="nome" formControlName="nome"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="apelido">Apelido</label>
+                    <input type="text" class="form-control mt-2 mb-2" name="apelido" id="apelido"
+                        formControlName="apelido" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="especie">Espécie</label>
+                    <select class="form-select mt-2 mb-2" name="especie" id="especie" formControlName="especie"
+                        required>
+                        <option value="Cachorro">Cachorro</option>
+                        <option value="Gato">Gato</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dtNascto">Data de nascimento</label>
+                    <input type="date" class="form-control mt-2 mb-2" name="dtNascto" id="dtNascto"
+                        formControlName="dtNascto">
+                </div>
+
+                <div class="form-group">
+                    <label for="raca">Raça</label>
+                    <input type="text" class="form-control mt-2 mb-2" name="raca" id="raca" formControlName="raca"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="genero">Gênero</label>
+                    <select class="form-select mt-2 mb-2" name="genero" id="genero" formControlName="genero"
+                        required>
+                        <option value="Macho">Macho</option>
+                        <option value="Fêmea">Fêmea</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="peso">Peso</label>
+                    <input type="number" class="form-control mt-2 mb-2" name="peso" id="peso" formControlName="peso"
+                        required>
+                </div>
+
+                <label for="isCastrado" class="mt-2 mb-2">Seu pet é castrado?</label>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input mr-3" name="isCastrado" id="isCastradoTrue"
+                        formControlName="isCastrado" value="true" ng-value="boolean">
+                    <label for="isCastradoTrue" class="form-check-label">Sim</label>
+                    <br>
+                    <input type="radio" class="form-check-input mr-3" name="isCastrado" id="isCastradoFalse"
+                        formControlName="isCastrado" value="false" ng-value="boolean">
+                    <label for="isCastradoFalse" class="form-check-label">Não</label>
+                </div>
+
+                <button type="submit" class="btn mt-4 mr-5" style="background-color:#ff9a61;">Salvar</button>
+                &nbsp;
+                <button class="btn btn-secondary mt-4 ml-5">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</form>
