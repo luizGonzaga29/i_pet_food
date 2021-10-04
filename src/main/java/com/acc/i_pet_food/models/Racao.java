@@ -1,7 +1,6 @@
 package com.acc.i_pet_food.models;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,8 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -41,12 +38,6 @@ public class Racao implements Serializable {
 	@Column(name = "rac_desconto")
 	private Double desconto;
 	
-	@Column(name = "rac_dt_cad_ini")
-	private Date dataInicio;
-	
-	@Column(name = "rac_dt_cad_fim")
-	private Date dataFim;
-	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "rac_est_id_pk_fk")
@@ -63,14 +54,12 @@ public class Racao implements Serializable {
 	
 	public Racao() {}
 
-	public Racao(Integer id, String nome, Double preco, Double desconto, Date dataInicio, Date dataFim,
+	public Racao(Integer id, String nome, Double preco, Double desconto,
 			Estoque estoque) {
 		this.id = id;
 		this.nome = nome;
 		this.preco = preco;
 		this.desconto = desconto;
-		this.dataInicio = dataInicio;
-		this.dataFim = dataFim;
 		this.estoque = estoque;
 	}
 	
@@ -124,22 +113,6 @@ public class Racao implements Serializable {
 		this.desconto = desconto;
 	}
 
-	public Date getDataInicio() {
-		return dataInicio;
-	}
-
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-	public Date getDataFim() {
-		return dataFim;
-	}
-
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
-	}
-
 	public Estoque getEstoque() {
 		return estoque;
 	}
@@ -148,10 +121,12 @@ public class Racao implements Serializable {
 		this.estoque = estoque;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Racao [id=" + id + ", nome=" + nome + ", preco=" + preco + ", desconto=" + desconto + ", dataInicio="
-				+ dataInicio + ", dataFim=" + dataFim + ", estoque=" + estoque + "]";
+		return "Racao [id=" + id + ", nome=" + nome + ", preco=" + preco + ", desconto=" + desconto + ", estoque="
+				+ estoque + ", itens=" + itens + ", pets=" + pets + "]";
 	}
 
 	@Override

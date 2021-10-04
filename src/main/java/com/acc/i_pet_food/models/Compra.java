@@ -30,7 +30,7 @@ public class Compra implements Serializable {
 	private Integer id;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "cmp_cli_CPF_pk_fk")
+	@JoinColumn(name = "cmp_cli_CPF_pk_fk", nullable = false)
 	private Cliente cliente;
 	
 	@Column(name = "cmp_dt_cmp")

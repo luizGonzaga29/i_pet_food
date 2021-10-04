@@ -29,6 +29,9 @@ public class Cliente implements Serializable {
 	@Column(name = "cli_nome")
 	private String nome;
 	
+	@Column(name = "cli_bairro")
+	private String bairro;
+	
 	@Column(name = "cli_mesano_nascto")
 	private Date dataNascimento;
 	
