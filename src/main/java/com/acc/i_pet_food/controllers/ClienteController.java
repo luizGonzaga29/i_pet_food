@@ -32,6 +32,7 @@ public class ClienteController {
 	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Cliente> pegarClienteCpf(@PathVariable(value = "id") String cpf) {
 		Optional<Cliente> cliente = clienteRepository.findById(cpf);
+		
 		if (cliente.isPresent())
 			return new ResponseEntity<Cliente>(cliente.get(), HttpStatus.OK);
 		else

@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -30,7 +32,7 @@ public class Compra implements Serializable {
 	private Integer id;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "cmp_cli_CPF_pk_fk", nullable = false)
+	@JoinColumn(name = "cmp_cli_CPF_pk_fk")
 	private Cliente cliente;
 	
 	@Column(name = "cmp_dt_cmp")
@@ -42,7 +44,7 @@ public class Compra implements Serializable {
 	@Column(name = "cmp_qtde")
 	private Integer quantidade;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="compra", cascade=CascadeType.ALL, targetEntity = Item.class)
     private Set<Item> itens = new HashSet<Item>();
 	

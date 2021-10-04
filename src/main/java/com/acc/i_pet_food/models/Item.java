@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "itens")
 public class Item implements Serializable {
@@ -24,7 +22,7 @@ public class Item implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "it_cmp_id_pk_fk")
 	private Compra compra;
