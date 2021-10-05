@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pet } from '../../shared/pet'
+import { PetService } from '../../services/pet.service'
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -11,7 +12,7 @@ export class CadastroPetComponent implements OnInit {
 
   formPet!: FormGroup
 
-  constructor() { }
+  constructor(private petService: PetService) { }
 
   ngOnInit(): void {
     this.createForm(new Pet())
@@ -19,6 +20,7 @@ export class CadastroPetComponent implements OnInit {
 
   createForm(pet: Pet) {
     this.formPet = new FormGroup({
+      clienteCPF: new FormControl(pet.clienteCPF),
       especie: new FormControl(pet.especie),
       nome: new FormControl(pet.nome),
       apelido: new FormControl(pet.apelido),
@@ -31,7 +33,17 @@ export class CadastroPetComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formPet.value);
+    const data = {
+      especie: this.formPet.controls.especie.value,
+      nome: this.formPet.controls.nome.value,
+      apelido: this.formPet.controls.apelido.value,
+      dataNascimento: this.formPet.controls.dtNascto.value,
+      raca: this.formPet.controls.raca.value,
+      genero: this.formPet.controls.genero.value,
+      peso: this.formPet.controls.peso.value,
+    }
+
+    this.petService.create(data).subscribe(res => console.log(res), error => console.log(error));
   }
 
 }
