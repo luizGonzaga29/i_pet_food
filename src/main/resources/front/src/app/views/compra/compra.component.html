@@ -1,0 +1,28 @@
+<form [formGroup]="formCompra">
+  <div class="container" style="width: 500px;">
+    <div class="card bg-light mb-3 mx-auto mt-5">
+      <div class="card-header text-center" style="background-color:#ff9a61;">
+        <h2>Comprar ração</h2>
+      </div>
+      <div class="card-body">
+
+        <div class="form-group">
+          <div *ngFor="let racao of racoes">
+            <label class="form-check-label">
+              <input  type="checkbox" class="form-check-input mt-2 mb-2">
+              {{racao.nome}}
+
+              <input type="number" class="form-control" id="quantidade{{racao.id}}">
+            </label>
+          </div>
+            
+        </div>
+
+        <button type="submit" class="btn mt-4 mr-5" style="background-color:#ff9a61;">Salvar</button>
+        &nbsp;
+        <button class="btn btn-secondary mt-4 ml-5">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+</form>

@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CadastroClienteComponent } from './views/cadastro-cliente/cadastro-cliente.component';
 import { CadastroPetComponent } from './views/cadastro-pet/cadastro-pet.component';
+import { CompraComponent } from './views/compra/compra.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastroClienteComponent,
     CadastroPetComponent,
+    CompraComponent,
   ],
   imports: [
     BrowserModule,
