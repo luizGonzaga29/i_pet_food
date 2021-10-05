@@ -16,7 +16,6 @@ export class CadastroClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm(new Cliente());
-    console.log(this.formCliente.controls.dDD)
   }
 
   createForm(cliente: Cliente) {

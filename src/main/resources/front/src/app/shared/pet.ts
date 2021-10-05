@@ -1,4 +1,5 @@
 export class Pet {
+    clienteCPF: string = ''
     especie: string = ''
     nome: string = ''
     apelido: string = ''
