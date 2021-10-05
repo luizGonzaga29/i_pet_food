@@ -33,13 +33,13 @@ export class CadastroClienteComponent implements OnInit {
 
   onSubmit() {
     const data = {
-      cli_nome: this.formCliente.controls.nome.value,
-      cli_cpf_pk: this.formCliente.controls.cPF.value,
-      cli_mesano_nascto: this.formCliente.controls.diaMesNascto.value,
-      cli_email: this.formCliente.controls.email.value,
-      cli_ddd: this.formCliente.controls.dDD.value,
-      cli_celular_zap: this.formCliente.controls.celular.value,
-      cli_bairro: this.formCliente.controls.bairro.value
+      nome: this.formCliente.controls.nome.value,
+      cpf: this.formCliente.controls.cPF.value,
+      dataNascimento: this.formCliente.controls.diaMesNascto.value,
+      email: this.formCliente.controls.email.value,
+      ddd: this.formCliente.controls.dDD.value,
+      numCelular: this.formCliente.controls.celular.value,
+      bairro: this.formCliente.controls.bairro.value
     }
 
     this.clienteService.create(data).subscribe(res => console.log(res), error => console.log(error))

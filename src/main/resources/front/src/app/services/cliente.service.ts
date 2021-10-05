@@ -12,6 +12,6 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   create(data: any): Observable<any> {
-    return this.http.post(url, data)
+    return this.http.post(url, data);
   }
 }

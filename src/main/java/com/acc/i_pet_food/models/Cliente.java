@@ -23,7 +23,7 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "cli_CPF_pk")
+	@Column(name = "cli_CPF_pk", nullable = false)
 	private String cpf;
 	
 	@Column(name = "cli_nome")
