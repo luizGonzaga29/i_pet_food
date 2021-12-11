@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
+//dfgdgdgdgdgdgdgd
 @Entity
 @Table(name = "cliente")
 public class Cliente implements Serializable {
