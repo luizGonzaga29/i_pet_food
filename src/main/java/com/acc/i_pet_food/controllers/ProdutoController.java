@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.acc.i_pet_food.models.Pet;
 import com.acc.i_pet_food.models.Produto;
 import com.acc.i_pet_food.repositories.ProdutoRepository;
 
@@ -50,6 +51,21 @@ public class ProdutoController {
 		if (produto.isPresent()) {
 			produtoRepository.delete(produto.get());
 			return new ResponseEntity<>(HttpStatus.OK);
+		} else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value = "/produto/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Produto> updateProduto(@PathVariable(value = "id") int id,
+			@Valid @RequestBody Produto newProduto) {
+		Optional<Produto> oldProduto = produtoRepository.findById(id);
+		if (oldProduto.isPresent()) {
+			Produto produto = oldProduto.get();
+			produto.setNome(newProduto.getNome());
+			produto.setDescricao(newProduto.getDescricao());
+			produto.setPreco(newProduto.getPreco());
+			produtoRepository.save(produto);
+			return new ResponseEntity<Produto>(produto, HttpStatus.OK);
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
